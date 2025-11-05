@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marcos Rent Car - Punta Cana</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #0a0a0f;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: linear-gradient(90deg, #001F3F, #0074D9, #39CCCC);
+      text-align: center;
+      padding: 2.5rem 1rem;
+      animation: glow 4s infinite alternate;
+      perspective: 1000px;
+    }
+
+    @keyframes glow {
+      from { box-shadow: 0 0 10px #39CCCC; }
+      to { box-shadow: 0 0 25px #0074D9; }
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      letter-spacing: 2px;
+      transform: rotateY(10deg);
+      animation: floatText 5s infinite alternate ease-in-out;
+    }
+
+    @keyframes floatText {
+      from { transform: rotateY(10deg) translateY(0); }
+      to { transform: rotateY(-10deg) translateY(-5px); }
+    }
+
+    header p {
+      margin-top: .5rem;
+      font-size: 1.2rem;
+      opacity: 0.9;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    /* SLIDER */
+    .slider {
+      position: relative;
+      width: 100%;
+      height: 75vh;
+      overflow: hidden;
+    }
+
+    .slides {
+      display: flex;
+      width: 400%;
+      height: 100%;
+      animation: slide 22s infinite;
+    }
+
+    .slides img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.7);
+      transition: transform 1s ease;
+    }
+
+    .slides img:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes slide {
+      0%, 20% { transform: translateX(0); }
+      25%, 45% { transform: translateX(-100%); }
+      50%, 70% { transform: translateX(-200%); }
+      75%, 95% { transform: translateX(-300%); }
+      100% { transform: translateX(0); }
+    }
+
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #fff;
+      z-index: 2;
+      animation: fadeInUp 2s ease forwards;
+    }
+
+    .hero-text h2 {
+      font-size: 3rem;
+      text-shadow: 0 0 20px rgba(0,0,0,0.8);
+      background: linear-gradient(90deg, #00e6ff, #00ff99);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transform: perspective(800px) rotateX(15deg);
+      animation: textFloat 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes textFloat {
+      from { transform: perspective(800px) rotateX(15deg) translateY(0); }
+      to { transform: perspective(800px) rotateX(-15deg) translateY(-8px); }
+    }
+
+    .hero-text a {
+      display: inline-block;
+      margin-top: 1.5rem;
+      background: linear-gradient(90deg, #25D366, #00ff99);
+      color: white;
+      padding: 0.9rem 2.2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 0 15px rgba(0,255,153,0.6);
+      transition: all 0.3s ease;
+      transform: translateZ(0);
+      animation: fadeIn 3s ease forwards;
+    }
+
+    .hero-text a:hover {
+      transform: scale(1.08) translateZ(10px);
+      box-shadow: 0 0 25px rgba(0,255,153,0.9);
+    }
+
+    section {
+      padding: 3rem 1rem;
+      max-width: 1100px;
+      margin: auto;
+      text-align: center;
+      animation: fadeInUp 2s ease;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(90deg, #00ccff, #00ff99);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service {
+      background: rgba(255,255,255,0.05);
+      border-radius: 15px;
+      padding: 1.5rem;
+      transition: 0.4s;
+      border: 1px solid rgba(255,255,255,0.1);
+      transform-style: preserve-3d;
+    }
+
+    .service:hover {
+      transform: rotateY(8deg) scale(1.05);
+      background: rgba(0, 255, 204, 0.08);
+      border-color: #00ff99;
+      box-shadow: 0 0 20px rgba(0,255,204,0.3);
+    }
+
+    .service img {
+      width: 100%;
+      border-radius: 12px;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .service h3 {
+      margin: 1rem 0 .5rem;
+      color: #00ffcc;
+    }
+
+    .contact {
+      text-align: center;
+      background: linear-gradient(90deg, #001F3F, #0074D9);
+      padding: 3rem 1rem;
+      color: white;
+      border-top: 5px solid #00ff99;
+    }
+
+    .contact a {
+      background: linear-gradient(90deg, #25D366, #00ff99);
+      padding: 0.9rem 2rem;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 50px;
+      display: inline-block;
+      font-weight: bold;
+      transition: 0.3s;
+      box-shadow: 0 0 20px rgba(0,255,153,0.5);
+    }
+
+    .contact a:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 30px rgba(0,255,153,0.9);
+    }
+
+    footer {
+      text-align: center;
+      background: #000814;
+      color: #aaa;
+      padding: 1rem;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+
+    /* BOTÓN FLOTANTE WHATSAPP */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(90deg, #25D366, #00ff99);
+      color: white;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 0 15px rgba(0,255,153,0.5);
+      transition: 0.3s;
+      z-index: 100;
+      text-decoration: none;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px rgba(0,255,153,0.9);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      .hero-text h2 {
+        font-size: 2rem;
+      }
+      header h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🚗 Marcos Rent Car</h1>
+    <p>Conduce el Futuro del Turismo en Punta Cana</p>
+  </header>
+
+  <div class="slider">
+    <div class="slides">
+      <img src="https://images.unsplash.com/photo-1612036782180-6f0b0e4db4ac?auto=format&fit=crop&w=1400&q=80" alt="Auto Deportivo">
+      <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1400&q=80" alt="SUV">
+      <img src="https://images.unsplash.com/photo-1542282088-fe8426682b8b?auto=format&fit=crop&w=1400&q=80" alt="Familiar">
+      <img src="https://images.unsplash.com/photo-1605559424843-9e4a5c7c2ff9?auto=format&fit=crop&w=1400&q=80" alt="Jeep 4x4">
+    </div>
+
+    <div class="hero-text">
+      <h2>Explora con Estilo, Conduce con Libertad</h2>
+      <a href="https://wa.me/18094078708?text=Hola%20Marcos%20Rent%20Car!%20Quiero%20reservar%20un%20veh%C3%ADculo." target="_blank">💬 Reserva por WhatsApp</a>
+    </div>
+  </div>
+
+  <section id="servicios">
+    <h2>Servicios Premium</h2>
+    <div class="services">
+      <div class="service">
+        <img src="https://images.unsplash.com/photo-1549924231-f129b911e442?auto=format&fit=crop&w=900&q=60" alt="Rent Car">
+        <h3>Renta de Autos</h3>
+        <p>Autos deportivos, familiares y SUV modernos, perfectos para cualquier viaje.</p>
+      </div>
+      <div class="service">
+        <img src="https://images.unsplash.com/photo-1524583036526-1e35c9a9ef1b?auto=format&fit=crop&w=900&q=60" alt="Transporte VIP">
+        <h3>Transporte VIP</h3>
+        <p>Viaja con lujo y puntualidad, con chofer privado desde y hacia el aeropuerto.</p>
+      </div>
+      <div class="service">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=60" alt="Excursiones">
+        <h3>Excursiones</h3>
+        <p>Descubre playas, ríos y montañas con experiencias únicas guiadas por expertos.</p>
+      </div>
+      <div class="service">
+        <img src="https://images.unsplash.com/photo-1590080875839-6cfb72b835b4?auto=format&fit=crop&w=900&q=60" alt="Yates">
+        <h3>Renta de Yates</h3>
+        <p>Perfecto para celebraciones privadas y momentos inolvidables en el Caribe.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contacto">
+    <h2>📞 Contáctanos</h2>
+    <p>WhatsApp: <strong>+1 (809) 407-8708</strong></p>
+    <p>Email: <strong>marcosrentcar@gmail.com</strong></p>
+    <a href="https://wa.me/18094078708?text=Hola%20Marcos%20Rent%20Car!%20Estoy%20interesado%20en%20un%20servicio." target="_blank">💬 Escribir por WhatsApp</a>
+  </section>
+
+  <a href="https://wa.me/18094078708?text=Hola%20Marcos%20Rent%20Car!" class="whatsapp-float" target="_blank">💬</a>
+
+  <footer>
+    © 2025 Marcos Rent Car | Punta Cana, República Dominicana
+  </footer>
+</body>
+</html>
